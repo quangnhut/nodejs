@@ -1,0 +1,84 @@
+<% include ../layout/header.ejs %>
+<!-- Header End -->
+
+<div id="maincontainer">
+  <section id="product">
+    <div class="container">      
+      <!-- Product Details-->
+      <div class="row">
+       <!-- Left Image-->
+        <div class="span5">
+          <ul class="thumbnails mainimage">
+            <li class="span5">
+              <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="upload/<%=data.image%>">
+                <img src="upload/<%= data.image%>" style="width: 480px; height: 350px;">
+              </a>
+            </li>
+          </ul>
+       
+        </div>
+         <!-- Right Details-->
+        <div class="span7">
+          <div class="row">
+            <div class="span7">
+              <h1 class="productname"><span class="bgnone"><%= data.name%></span></h1>
+              <div class="productprice">
+                <div class="productpageprice"><i class="fa fa-usd"></i>
+                  <%= data.price%> VND
+                  </div>
+              </div>
+              <ul class="productpagecart">
+                <li><a class="cart" href="/add-cart.<%= data._id %>"><i class="fa fa-shopping-cart">  Thêm vào giỏ</i></a>
+                </li>
+              </ul>
+         <!-- Product Description tab & comments-->
+         <div class="productdesc">
+                <ul class="nav nav-tabs" id="myTab">
+                  <li class="active"><a href="#description">Thông tin</a>
+                  </li>
+              
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="description">
+                    <h2>Chi Tiết Sản Phẩm</h2>
+                    <%= data.description%>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--  Related Products-->
+  <section id="related" class="row">
+    <div class="container">
+      <h1 class="heading1"><span class="maintext">Sản Phẩm Khác</span></h1>
+      <ul class="thumbnails">
+        <% product.forEach(function(pro){ %>
+            <li class="span3">
+              <a class="productname" href="product.html"> <%= pro.name %> </a>
+              <div class="thumbnail">
+                <span class="sale tooltip-test">Sale</span>
+                <a href="/chi-tiet/<%= pro.nameKhongDau %>.<%= pro._id %>.<%= pro.categoryID %>.html"><img src="upload/<%= pro.image %>"></a>
+                <div class="pricetag">
+                  <span class="spiral"></span><a href="/add-cart.<%= pro._id %>" class="productcart">Thêm</a>
+                  <div class="price">
+                    <div class="pricenew"><i class="fa fa-usd"></i><%= pro.price %></div>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <% })%>
+
+        
+      </ul>
+    </div>
+  </section>
+  <!-- Popular Brands-->
+</div>
+
+<!-- Footer -->
+<% include ../layout/footer.ejs %>

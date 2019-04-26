@@ -1,0 +1,130 @@
+<footer id="footer">
+  <section class="footersocial">
+    <div class="container">
+      <div class="row">
+        <div class="span3 aboutus">
+          <h2>About Us </h2>
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>
+            <br>
+            t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+        </div>
+        <div class="span3 contact">
+          <h2>Contact Us </h2>
+          <ul>
+            <li>Dev Dieu</li>
+            <li>09231747343289</li>
+            <li>Dev Huy</li>
+            <li>09231747343289</li>
+          </ul>
+        </div>
+        <div class="span3 ">
+          <h2>Email </h2>
+          <div id="email">
+          <ul>
+            <li>test@gmail.com</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="copyrightbottom">
+    <div class="container">
+      <div class="row">
+        <div class="span6"> All images are copyright to their owners. </div>
+        <div class="span6 textright"> Design by Dieu & Huy </div>
+      </div>
+    </div>
+  </section>
+  <a id="gotop" href="/"> Back to top</a>
+</footer>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/respond.min.js"></script>
+<script src="js/application.js"></script>
+<script src="js/bootstrap-tooltip.js"></script>
+<script defer src="js/jquery.fancybox.js"></script>
+<script defer src="js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="js/jquery.tweet.js"></script>
+<script  src="js/cloud-zoom.1.0.2.js"></script>
+<script  type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript"  src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript"  src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"  src="js/jquery.ba-throttle-debounce.min.js"></script>
+<script defer src="js/custom.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        menu();
+
+        $('.updateCart').click(function(){
+            var id = $(this).attr('id');
+            var soluong = parseInt($('#'+ id).val());
+            if(soluong > 0){
+                $.post(
+                    './updateCart',
+                    {
+                      id      : id,
+                      soLuong : soluong
+                    }, function(data){                     
+                      
+                      if(data.status == 1) location.href = "gio-hang.html";
+                    }
+                ), 'json';
+            }
+        });
+
+         $('.deleteCart').click(function(){
+            var id = $(this).attr('id');
+                $.post(
+                    './deleteCart',
+                    {
+                      id  : id,
+                    }, function(data){                                         
+                      if(data.status == 1) location.href = "gio-hang.html";
+                    }
+                ), 'json';
+            
+        });
+
+        
+
+
+    });
+
+    function menu(){
+      $.post(
+          './menu',
+          {
+
+          },function(data){
+            var classMenu = '';
+            var hash = location.pathname;
+
+            if(hash == '/') var menu = '<li><a class="active" href="/" >Home</a></li>';
+            else var menu = '<li><a  href="/">Home</a></li>';
+       
+            data.forEach(function(item){
+              var urlMenu     = '/category/' + item.nameKhongDau +'.' + item._id + '.html';
+               var pathName   = location.pathname;
+               pathName       = pathName.split('.')[2];
+               
+               menu += '<li><a  href="'+ urlMenu +'" ';
+               if(urlMenu == hash || item._id == pathName) menu += 'class="active"';
+               menu += '>'+item.name+'</a></li>';
+            });
+            $('#categorymenu ul.categorymenu').html(menu);
+
+
+          }
+        );
+    }
+
+
+</script>
+</body>
+</html>
