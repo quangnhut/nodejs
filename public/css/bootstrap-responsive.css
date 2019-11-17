@@ -149,7 +149,7 @@
     width: 370px;
   }
   .span3 {
-    width: 270px;
+    width: 250px;
   }
   .span2 {
     width: 170px;
@@ -440,6 +440,7 @@
   }
   .thumbnails > li {
     margin-left: 30px;
+    margin-top: 30px;
   }
   .row-fluid .thumbnails {
     margin-left: 0;

@@ -5,6 +5,7 @@ var Category = require('../model/category');
 var Product = require('../model/product');
 var Cart = require('../model/cart');
 var GioHang = require('../model/giohang');
+var User = require('../model/user');
 
 var countJson = function(json){
 	var count = 0;
@@ -33,19 +34,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/category/:name.:id.html', function(req, res){
+  var gioHang = new GioHang((req.session.cart) ? req.session.cart : {items: {}});
+  var datagh = gioHang.convertArray();
   Product.find({ categoryID: req.params.id }).then(function (data) {
     Category.find().then(function(category){
       console.log("data  " + data);
       console.log("cate" + category);
-      res.render('client/page/category', { product: data, category: category });
+      res.render('client/page/category', { product: data, category: category, data : datagh });
     });
   });
 });
 
 router.get('/chi-tiet/:name.:id.:category.html', function(req, res){
+  var gioHang = new GioHang((req.session.cart) ? req.session.cart : {items: {}});
+  var dataDetail = gioHang.convertArray();
   Product.findById(req.params.id).then(function(data){
     Product.find({categoryID: data.categoryID, _id: {$ne: data._id}}).limit(3).then(function(product){
-      res.render('client/page/chitiet', {data: data, product: product});
+      res.render('client/page/chitiet', {dataPro: data, product: product, data:dataDetail});
     });
   });
 });
@@ -94,7 +99,8 @@ router.get('/add-cart.:id', function(req, res){
   Product.findById(id).then(function(data){
     gioHang.add(id, data);
     req.session.cart = gioHang;
-    res.redirect('/gio-hang.html');
+    res.redirect('back');
+    inline();
   });
 });
 

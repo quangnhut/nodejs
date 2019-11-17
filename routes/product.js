@@ -47,7 +47,7 @@ router.get('/them-product.html', checkAdmin,function(req, res){
 router.post('/them-product.html', upload.single('image'), function(req, res){
     req.checkBody('name', 'Tên không được rỗng').notEmpty();
     req.checkBody('price', 'Kiểu số').isInt();
-    req.checkBody('description', 'Mô tả không dược trống').notEmpty();
+    req.checkBody('description', 'Mô tả không được trống').notEmpty();
     var errors = req.validationErrors();
     if(errors){
         var file = './public/upload/' + req.file.filename;
@@ -84,7 +84,7 @@ router.get('/:id/sua-product.html', checkAdmin,function(req, res){
 router.post('/:id/sua-product.html',upload.single('image'), function(req, res){
     req.checkBody('name', 'Tên không được rỗng').notEmpty();
     req.checkBody('price', 'Kiểu số').isInt();
-    req.checkBody('description', 'Mô tả không dược trống').notEmpty();
+    req.checkBody('description', 'Mô tả không được trống').notEmpty();
     var errors = req.validationErrors();
     if(errors){
         var file = './public/upload/' + req.file.filename;
@@ -98,13 +98,13 @@ router.post('/:id/sua-product.html',upload.single('image'), function(req, res){
        });
     }else{
         Product.findOne({_id: req.params.id}, function(err, data){
-            var file = './public/upload/'+ data.filename;
-            fs.unlink(file, function(err){
-                if(err) throw err;
-            });
+            var file = './public/upload/' + data.filename;
+            // fs.unlink(file, function(err){
+            //     if(err) throw err;
+            // });
             data.name = req.body.name;
             data.nameKhongDau= bodauTiengViet(req.body.name);
-            data.image= req.file.filename;
+            //data.image= req.file.filename;
             data.description= req.body.description;
             data.categoryID= req.body.category;
             data.price= req.body.price;
@@ -133,7 +133,7 @@ function checkAdmin(req, res, next){
     if(req.isAuthenticated()){
         next();
     }else{
-        res.redirect('/admin/login.html')
+        res.redirect('/admin/login')
     }
 }
 

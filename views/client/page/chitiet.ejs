@@ -10,8 +10,8 @@
         <div class="span5">
           <ul class="thumbnails mainimage">
             <li class="span5">
-              <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="upload/<%=data.image%>">
-                <img src="upload/<%= data.image%>" style="width: 480px; height: 350px;">
+              <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="upload/<%=dataPro.image%>">
+                <img src="upload/<%= dataPro.image%>" style="width: 480px; height: 350px;">
               </a>
             </li>
           </ul>
@@ -21,14 +21,14 @@
         <div class="span7">
           <div class="row">
             <div class="span7">
-              <h1 class="productname"><span class="bgnone"><%= data.name%></span></h1>
+              <h1 class="productname"><span class="bgnone"><%= dataPro.name%></span></h1>
               <div class="productprice">
                 <div class="productpageprice"><i class="fa fa-usd"></i>
-                  <%= data.price%> VND
+                  <%= dataPro.price%> VND
                   </div>
               </div>
               <ul class="productpagecart">
-                <li><a class="cart" href="/add-cart.<%= data._id %>"><i class="fa fa-shopping-cart">  Thêm vào giỏ</i></a>
+                <li><a class="cart" href="/add-cart.<%= dataPro._id %>"><i class="fa fa-shopping-cart">  Thêm vào giỏ</i></a>
                 </li>
               </ul>
          <!-- Product Description tab & comments-->
@@ -41,7 +41,7 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="description">
                     <h2>Chi Tiết Sản Phẩm</h2>
-                    <%= data.description%>
+                    <%= dataPro.description%>
                   </div>
 
                 </div>

@@ -26,7 +26,7 @@
     <div class="container">
       <div class="row">
         <div class="span12">
-          <a href="/"><img src="img/logo.png"></i></a>
+          <a href="/"><img src="img/logo.jpg"></i></a>
           <!-- Top Nav Start -->
 
           <div class="pull-left ">
@@ -38,10 +38,7 @@
                   <% data.forEach(function(da){%>
                   <%count += parseInt(da.soLuong) %>
                   <%})%>
-                  <li><a class="shoppingcart" href="/gio-hang.html">Cart <span class="cart-count"><%=count%></span></a>
-
-                     <li><a class="shoppingcart" href="/gio-hang.html">Cart <span class="cart-count"><%=session.cart%></span></a>
-                  </li>
+                  <li><a class="shoppingcart" href="/gio-hang.html">Giỏ hàng<span class="cart-count"><%=count%></span></a>
                 </ul>
               </div>
             </div>

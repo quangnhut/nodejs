@@ -38,10 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Connect to DB
 var mongoClient = mongodb.MongoClient;
-const url = 'mongodb://localhost:27017/Shop';
+const url = 'mongodb://localhost:27017/shop';
 mongoose.connect(url, { useNewUrlParser: true }).then(
   () => {
-    console.log("Connect DB successfully");
+    console.log("Kết nối database thành công");
   },
   err => {
     console.log("Loi ket noi DB");
@@ -50,7 +50,7 @@ mongoose.connect(url, { useNewUrlParser: true }).then(
 
 //handle session
 app.use(session({
-  secret: 'huyle',
+  secret: 'nhutjt',
   saveUninitialized: true,
   key: 'user',
   saveUninitialized: true,
@@ -94,7 +94,7 @@ app.use(validator({
 //Using router
 app.use('/', index);
 app.use('/admin', admin);
-app.use('/user', user);
+app.use('/admin/user', user);
 app.use('/admin/category', category);
 app.use('/admin/product', product);
 app.use('/admin/cart', cart);
@@ -114,5 +114,4 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 module.exports = app;

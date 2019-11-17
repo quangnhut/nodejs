@@ -15,14 +15,14 @@ router.get('/',checkAdmin, function (req, res, next) {
     console.log('Vào dashboard');
 });
 
-router.get('/login.html', function (req, res, next) {
+router.get('/login', function (req, res, next) {
     res.render('admin/login/index');
 });
 
-router.post('/login.html',
+router.post('/login',
     passport.authenticate('local', {
         successRedirect: '/admin',
-        failureRedirect: '/admin/login.html',
+        failureRedirect: '/admin/login',
         failureFlash: true,
     }));
 
@@ -41,7 +41,6 @@ passport.use(new LocalStrategy({
         return done(null, user);
     });
 }));
-
 passport.serializeUser((email, done) => {
     done(null, email.id);
 });
@@ -60,7 +59,7 @@ router.post('/getUser', checkAdmin, function (req, res) {
 
 router.get('/logout.html',checkAdmin, function (req, res) {
     req.logout();
-    res.redirect('/admin/login.html');
+    res.redirect('/admin/login');
 });
 
 function checkAdmin(req, res, next) {
@@ -68,9 +67,9 @@ function checkAdmin(req, res, next) {
         next();
     }
     else {
-        console.log('Muốn vào phải đăng nhập nhé');
+        console.log('Bạn phải đăng nhập để vào');
         console.log(req.isAuthenticated());
-        res.redirect('/admin/login.html');
+        res.redirect('/admin/login');
     }
 }
 

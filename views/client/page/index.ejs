@@ -8,13 +8,13 @@
       <div class="flexslider" id="mainslider">
         <ul class="slides">
           <li>
-            <img src="img/BANNER_BIGSIZENAM_91.jpg" alt="" />
+            <img src="img/banner2.jpg" alt="" />
           </li>
           <li>
-            <img src="img/BANNER_BIGSIZENAM_92.jpg" alt="" />
+            <img src="img/banner3.jpg" alt="" />
           </li>
           <li>
-            <img src="img/BANNER_BIGSIZENAM_93.jpg" alt="" />
+            <img src="img/banner4.jpg" alt="" />
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@
           <h1 class="heading1"><span class="maintext"> <%= cate.name%> </span><span class="subtext"></span></h1>
           
           <ul class="thumbnails">
-            <% product.forEach(function(pro){ if(id < 4) { if(pro.categoryID == cate._id){ id ++ ; %>
+            <% product.forEach(function(pro){ if(id < product.length) { if(pro.categoryID == cate._id){ id ++ ; %>
 
                   <li class="span3">
                     <a class="productname" href="product.html"> <%= pro.name %> </a>
@@ -52,7 +52,6 @@
       </section>
   <% })%>
   <!-- Latest Product-->
-
 
 <!-- Footer -->
 <% include ../layout/footer.ejs %>

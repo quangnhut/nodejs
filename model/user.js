@@ -7,7 +7,6 @@ var User = new Schema({
     username: String,
     password: String,
     email : String,
-    image: String,
 }, {collection: 'user'});
 
 User.methods.validPassword = function( pwd ) {

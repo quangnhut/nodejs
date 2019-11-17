@@ -393,7 +393,7 @@ a:hover, a:focus {
     min-height: 60px;
     position: fixed;
     width: 100%;
-    background-color: #3399ff;
+    background-color: orange;
     top: 0px;
     left: 0px;
     z-index: 1999;
@@ -406,7 +406,7 @@ a:hover, a:focus {
 }
 .page-topbar .logo-area {
     width: 260px;
-    background-color: #3399ff;
+    background-color: orange;
     display: block;
     min-height: 60px;
     float: left;
@@ -790,6 +790,7 @@ a:hover, a:focus {
 
 .page-sidebar.pagescroll {
     position: absolute;
+    background-color: powderblue;
 }
 
 .fixedscroll #main-menu-wrapper{
@@ -4111,7 +4112,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     color: #ffffff;
 }
 .icon-accent.icon-rounded, .icon-accent.icon-cornered, .icon-accent.icon-square {
-    background-color: #E91E63;
+    background-color: chartreuse;
     color: #ffffff;
 }
 .icon-primary.icon-rounded, .icon-primary.icon-cornered, .icon-primary.icon-square {
@@ -7108,7 +7109,7 @@ border-left: 3px solid transparent;
 ----------------------------------------------------------*/
 
 .page-topbar .logo-area {
-    background-image: url('../images/logo.png');
+    background-image: url('../images/complete.jpg');
     background-repeat: no-repeat;
 }
 .page-topbar.sidebar_shift .logo-area {
@@ -7989,7 +7990,7 @@ border-left: 3px solid transparent;
         }
 
         .page-topbar .logo-area {
-            background-image: url('../images/logo-folded.png');
+            background-image: url('../images/logo-f.png');
             background-repeat: no-repeat;
             background-position: left top;
         }
